@@ -4,7 +4,11 @@ var score = 0
 
 onready var scoreLabel = $ScoreLabel
 onready var fpsLabel = $FPSLabel
+onready var introPanel = $IntroductionPanel
 onready var introText = $IntroductionPanel/RichTextLabel
+onready var timer = $Timer
+
+onready var fallingEuro = load("res://scenes/FallingEuro.tscn")
 
 func _ready():
 	introText.add_text("Life is about taking risks\n")
@@ -17,4 +21,10 @@ func _process(delta):
 	fpsLabel.text = "FPS: " + str(fps)
 
 func on_start_pressed():
-	pass # replace with function body
+	introPanel.hide()
+	timer.start()
+
+func on_timer_timeout():
+	var euro = fallingEuro.instance()
+	euro.position = Vector2(320, 100)
+	add_child(euro)

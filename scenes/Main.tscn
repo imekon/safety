@@ -37,7 +37,7 @@ use_filter = false
 font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Main" type="Node2D" index="0"]
+[node name="Main" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -172,6 +172,15 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
+[node name="Timer" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 7.0
+one_shot = false
+autostart = false
+
 [connection signal="pressed" from="IntroductionPanel/StartButton" to="." method="on_start_pressed"]
+
+[connection signal="timeout" from="Timer" to="." method="on_timer_timeout"]
 
 

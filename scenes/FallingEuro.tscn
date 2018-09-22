@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/FallingShape.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/FallingEuro.gd" type="Script" id=2]
+[ext_resource path="res://images/euro.png" type="Texture" id=3]
+
+[node name="FallingEuro" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+
+texture = ExtResource( 3 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+
+polygon = PoolVector2Array( 0, -16, 10, -12, 10, -8, 4, -2, 4, 4, 10, 10, 10, 14, 0, 16, -8, 14, -14, 6, -14, -4, -8, -10 )
+
+
