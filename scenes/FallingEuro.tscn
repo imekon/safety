@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/FallingShape.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/FallingEuro.gd" type="Script" id=2]
+[ext_resource path="res://scripts/FallingEuro.gd" type="Script" id=2]
 [ext_resource path="res://images/euro.png" type="Texture" id=3]
 
 [node name="FallingEuro" instance=ExtResource( 1 )]

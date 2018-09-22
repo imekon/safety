@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/DirectedShape.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/CatastropheShape.gd" type="Script" id=2]
+[ext_resource path="res://images/exorcism.png" type="Texture" id=3]
+
+[node name="CatastropheShape" index="0" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Visibility" ]
+
+[node name="Sprite" parent="." index="0"]
+
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Material" ]
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+
+polygon = PoolVector2Array( -20, -25, 20, -25, 20, 20, -20, 20 )
+
+[node name="Tween" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 2.5
+playback/active = false
+playback/repeat = false
+playback/speed = 2.5
+_sections_unfolded = [ "playback" ]
+
+

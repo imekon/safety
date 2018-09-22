@@ -9,6 +9,7 @@ onready var introText = $IntroductionPanel/RichTextLabel
 onready var timer = $Timer
 
 onready var fallingEuro = load("res://scenes/FallingEuro.tscn")
+onready var directedCatastrophe = load("res://scenes/CatastropheShape.tscn")
 
 func _ready():
 	introText.add_text("Life is about taking risks\n")
@@ -25,6 +26,10 @@ func on_start_pressed():
 	timer.start()
 
 func on_timer_timeout():
-	var euro = fallingEuro.instance()
-	euro.position = Vector2(320, 100)
-	add_child(euro)
+	# var euro = fallingEuro.instance()
+	# euro.position = Vector2(320, 100)
+	#add_child(euro)
+
+	var catastrophe = directedCatastrophe.instance()
+	catastrophe.position = Vector2(320, 100)
+	add_child(catastrophe)
