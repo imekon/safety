@@ -1,6 +1,7 @@
 extends Node2D
 
 var score = 0
+var doneCatastrophe = false
 
 onready var scoreLabel = $ScoreLabel
 onready var fpsLabel = $FPSLabel
@@ -30,6 +31,8 @@ func on_timer_timeout():
 	# euro.position = Vector2(320, 100)
 	#add_child(euro)
 
-	var catastrophe = directedCatastrophe.instance()
-	catastrophe.position = Vector2(320, 100)
-	add_child(catastrophe)
+	if not doneCatastrophe:
+		var catastrophe = directedCatastrophe.instance()
+		catastrophe.position = Vector2(320, 100)
+		add_child(catastrophe)
+		doneCatastrophe = true

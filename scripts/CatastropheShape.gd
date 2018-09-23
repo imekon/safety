@@ -11,10 +11,10 @@ func _physics_process(delta):
 	
 func pulsate():
 	while true:
-		tween.interpolate_method(self, "on_pulsate", 0, 1, 2, Tween.TRANS_QUAD, Tween.EASE_IN)
+		tween.interpolate_method(self, "on_pulsate", 1, 0.3, 2, Tween.TRANS_QUAD, Tween.EASE_IN)
 		tween.start()
 		yield(tween, "tween_completed")
-		tween.interpolate_method(self, "on_pulsate", 1, 0, 2, Tween.TRANS_QUAD, Tween.EASE_IN)
+		tween.interpolate_method(self, "on_pulsate", 0.3, 1, 2, Tween.TRANS_QUAD, Tween.EASE_IN)
 		tween.start()
 		yield(tween, "tween_completed")
 

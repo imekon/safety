@@ -22,10 +22,9 @@ polygon = PoolVector2Array( -20, -25, 20, -25, 20, 20, -20, 20 )
 
 repeat = false
 playback_process_mode = 1
-playback_speed = 2.5
+playback_speed = 1.0
 playback/active = false
 playback/repeat = false
-playback/speed = 2.5
-_sections_unfolded = [ "playback" ]
+playback/speed = 1.0
 
 
