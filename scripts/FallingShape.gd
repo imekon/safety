@@ -1,5 +1,10 @@
 extends RigidBody2D
 
+enum { POSITIVE, NEUTRAL, NEGATIVE }
+
+export(int) var score = 10
+export(int) var state = NEUTRAL
+
 func _ready():
 	pass
 

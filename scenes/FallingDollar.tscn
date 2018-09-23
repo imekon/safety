@@ -5,6 +5,9 @@
 
 [node name="FallingShape" instance=ExtResource( 1 )]
 
+score = 10
+state = 1
+
 [node name="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
