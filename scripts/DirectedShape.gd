@@ -9,3 +9,6 @@ func _physics_process(delta):
 		return
 	velocity.y = velocity.y + delta * GRAVITY
 	position.y = position.y + velocity.y
+
+func on_timer_timeout():
+	queue_free()
