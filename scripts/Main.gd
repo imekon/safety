@@ -2,7 +2,7 @@ extends Node2D
 
 const STARTING_Y = -50
 const MOVEMENT = 100
-const NUM_SHAPES = 11
+const NUM_SHAPES = 16
 
 var doneCatastrophe = false
 
@@ -17,9 +17,13 @@ onready var fallingDollar = load("res://scenes/FallingDollar.tscn")
 onready var fallingPound = load("res://scenes/FallingPound.tscn")
 onready var fallingMale = load("res://scenes/FallingMale.tscn")
 onready var fallingFemale = load("res://scenes/FallingFemale.tscn")
+onready var fallingTrans = load("res://scenes/FallingTrans.tscn")
 onready var fallingMusic = load("res://scenes/FallingMusic.tscn")
+onready var fallingReligious = load("res://scenes/FallingReligious.tscn")
 
 onready var directedCatastrophe = load("res://scenes/CatastropheShape.tscn")
+
+onready var rain = load("res://scenes/Rain.tscn")
 
 func _ready():
 	randomize()
@@ -49,6 +53,12 @@ func on_timer_timeout():
 		release_the_catastrophe()
 	else:
 		pick_everything_else(picker)
+	drop_rain()
+	
+func drop_rain():
+	var drop = rain.instance()
+	drop.position = Vector2(get_random_start(), STARTING_Y)
+	add_child(drop)
 		
 func get_random_start():
 	return randi() % 1280
@@ -77,9 +87,19 @@ func release_the_female():
 	var item = fallingFemale.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	
+func release_the_trans():
+	var item = fallingTrans.instance()
+	item.position = Vector2(get_random_start(), STARTING_Y)
+	add_child(item)
 		
 func release_the_music():
 	var item = fallingMusic.instance()
+	item.position = Vector2(get_random_start(), STARTING_Y)
+	add_child(item)
+		
+func release_the_religious():
+	var item = fallingReligious.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
 		
@@ -100,9 +120,13 @@ func pick_everything_else(picker):
 			release_the_pound()
 		2, 3:
 			release_the_dollar()
-		4, 5, 6:
+		4, 5, 6, 7, 8:
 			release_the_male()
-		7, 8, 9:
+		9, 10, 11, 12:
 			release_the_female()
-		10:
+		13:
+			release_the_trans()
+		14:
 			release_the_music()
+		15:
+			release_the_religious()
