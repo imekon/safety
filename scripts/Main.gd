@@ -4,6 +4,7 @@ const STARTING_Y = -50
 const MOVEMENT = 100
 const NUM_SHAPES = 16
 
+var state_bias = 0
 var doneCatastrophe = false
 
 onready var scoreLabel = $ScoreLabel
@@ -28,7 +29,7 @@ onready var rain = load("res://scenes/Rain.tscn")
 func _ready():
 	randomize()
 	timer.start()
-
+	
 func _process(delta):
 	scoreLabel.text = "Score: " + str(player.score)
 	var fps = Engine.get_frames_per_second()
@@ -49,10 +50,10 @@ func move_player_right(delta):
 
 func on_timer_timeout():
 	var picker = randf()
-	if picker > 0.99:
+	if picker > 0.999:
 		release_the_catastrophe()
 	else:
-		var stateRange = randf()
+		var stateRange = randf() + state_bias
 		var state = 1
 		if stateRange < 0.2:
 			state = 0
@@ -125,6 +126,7 @@ func release_the_catastrophe():
 	var catastrophe = directedCatastrophe.instance()
 	catastrophe.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(catastrophe)
+	state_bias = 0.7
 	doneCatastrophe = true
 
 func pick_everything_else(picker, state):
@@ -149,3 +151,8 @@ func pick_everything_else(picker, state):
 			item = release_the_religious()
 	item.state = state
 	item.set_state()
+
+# change the overall gravity, use 0.5 to SLOW it all down
+func set_gravity(gravity):
+	Physics2DServer.area_set_param(get_world_2d().get_space(), PhysicsServer.AREA_PARAM_GRAVITY_VECTOR, Vector2(0, gravity))
+
