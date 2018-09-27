@@ -52,7 +52,15 @@ func on_timer_timeout():
 	if picker > 0.99:
 		release_the_catastrophe()
 	else:
-		pick_everything_else(picker)
+		var stateRange = randf()
+		var state = 1
+		if stateRange < 0.2:
+			state = 0
+		elif stateRange > 0.8:
+			state = 2
+		pick_everything_else(picker, state)
+	drop_rain()
+	drop_rain()
 	drop_rain()
 	
 func drop_rain():
@@ -67,41 +75,49 @@ func release_the_euro():
 	var euro = fallingEuro.instance()
 	euro.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(euro)
+	return euro
 	
 func release_the_dollar():
 	var item = fallingDollar.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	return item
 		
 func release_the_pound():
 	var item = fallingPound.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	return item
 	
 func release_the_male():
 	var item = fallingMale.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	return item
 		
 func release_the_female():
 	var item = fallingFemale.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	return item
 	
 func release_the_trans():
 	var item = fallingTrans.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	return item
 		
 func release_the_music():
 	var item = fallingMusic.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	return item
 		
 func release_the_religious():
 	var item = fallingReligious.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	return item
 		
 func release_the_catastrophe():
 	if doneCatastrophe:
@@ -111,22 +127,25 @@ func release_the_catastrophe():
 	add_child(catastrophe)
 	doneCatastrophe = true
 
-func pick_everything_else(picker):
+func pick_everything_else(picker, state):
 	var index = int(picker * NUM_SHAPES)
+	var item = null
 	match index:
 		0:
-			release_the_euro()
+			item = release_the_euro()
 		1:
-			release_the_pound()
+			item = release_the_pound()
 		2, 3:
-			release_the_dollar()
+			item = release_the_dollar()
 		4, 5, 6, 7, 8:
-			release_the_male()
+			item = release_the_male()
 		9, 10, 11, 12:
-			release_the_female()
+			item = release_the_female()
 		13:
-			release_the_trans()
+			item = release_the_trans()
 		14:
-			release_the_music()
+			item = release_the_music()
 		15:
-			release_the_religious()
+			item = release_the_religious()
+	item.state = state
+	item.set_state()

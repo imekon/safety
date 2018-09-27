@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/FallingShape.gd" type="Script" id=1]
 
-[node name="FallingShape" type="RigidBody2D" groups=[
+[node name="FallingShape" type="RigidBody2D" index="0" groups=[
 "falling",
 ]]
 
@@ -19,14 +19,18 @@ continuous_cd = 0
 contacts_reported = 0
 contact_monitor = false
 sleeping = false
-can_sleep = true
+can_sleep = false
 linear_velocity = Vector2( 0, 0 )
 linear_damp = -1.0
 angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 1 )
+score = 10
+state = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
+
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
 
