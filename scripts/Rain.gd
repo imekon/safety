@@ -5,7 +5,7 @@ const GRAVITY = 3
 var velocity = 0
 
 func _process(delta):
-	if position.y > 700:
+	if position.y > 800:
 		queue_free()
 		return
 	velocity = velocity + delta * GRAVITY

@@ -10,6 +10,8 @@ var doneCatastrophe = false
 onready var scoreLabel = $ScoreLabel
 onready var fpsLabel = $FPSLabel
 onready var shapesLabel = $ShapesLabel
+onready var safetyLabel = $SafetyLabel
+onready var safeSpace = $SafeSpace
 onready var player = $Player
 onready var timer = $Timer
 
@@ -32,6 +34,10 @@ func _ready():
 	
 func _process(delta):
 	scoreLabel.text = "Score: " + str(player.score)
+	safetyLabel.text = "Safety: " + str(player.safety)
+	
+	safeSpace.set_safety(player.safety)
+	
 	var fps = Engine.get_frames_per_second()
 	fpsLabel.text = "FPS: " + str(fps)
 	shapesLabel.text = "Shapes: " + str(get_tree().get_nodes_in_group("falling").size())
@@ -127,7 +133,11 @@ func release_the_catastrophe():
 	catastrophe.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(catastrophe)
 	state_bias = 0.7
+	connect("catastrophe_over", catastrophe, "on_catastrophe_over")
 	doneCatastrophe = true
+	
+func on_catastrophe_over():
+	state_bias = 0
 
 func pick_everything_else(picker, state):
 	var index = int(picker * NUM_SHAPES)

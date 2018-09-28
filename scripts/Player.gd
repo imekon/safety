@@ -1,15 +1,26 @@
 extends KinematicBody2D
 
 var score = 0
+var safety = 100
 
 func on_body_entered(body):
 	if body.is_in_group("falling"):
+		
 		match body.state:
 			0:
-				score += body.score * 1.5
+				score += body.score * 1.2
+				safety += 3
 			1:
 				score += body.score
+				safety += 1
 			2:
 				score -= body.score
+				safety -= 10
 				
+		if safety < 50:
+			safety = 50
+			
+		if safety > 100:
+			safety = 100
+
 		body.queue_free()
