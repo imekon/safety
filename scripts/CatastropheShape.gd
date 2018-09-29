@@ -19,4 +19,4 @@ func pulsate():
 		yield(tween, "tween_completed")
 
 func on_pulsate(value):
-	sprite.modulate = Color(value, 0.5, 0.5)
+	sprite.modulate = Color(value, 0.5 * value, 0.5 * value)

@@ -12,6 +12,9 @@ var messages = [ "Safe Space\n\n",
 func _ready():
 	for message in messages:
 		label.add_text(message)
+	
+	var version = Engine.get_version_info()
+	label.add_text("Made with Godot version " + version["string"])
 
 func on_back_pressed():
 	get_tree().change_scene("res://scenes/Welcome.tscn")
