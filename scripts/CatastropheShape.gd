@@ -6,9 +6,6 @@ onready var tween = $Tween
 func _ready():
 	pulsate()
 
-func _physics_process(delta):
-	pass
-	
 func pulsate():
 	while true:
 		tween.interpolate_method(self, "on_pulsate", 1, 0.3, 2, Tween.TRANS_QUAD, Tween.EASE_IN)

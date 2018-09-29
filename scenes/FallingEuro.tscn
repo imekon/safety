@@ -7,7 +7,6 @@
 [node name="FallingEuro" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-score = 10
 state = 1
 
 [node name="Sprite" parent="." index="0"]

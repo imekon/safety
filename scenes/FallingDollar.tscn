@@ -5,7 +5,7 @@
 
 [node name="FallingShape" instance=ExtResource( 1 )]
 
-score = 10
+score = -1
 state = 1
 
 [node name="Sprite" parent="." index="0"]

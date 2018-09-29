@@ -133,7 +133,7 @@ func release_the_catastrophe():
 	catastrophe.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(catastrophe)
 	state_bias = 0.7
-	connect("catastrophe_over", catastrophe, "on_catastrophe_over")
+	catastrophe.connect("catastrophe_over", self, "on_catastrophe_over")
 	doneCatastrophe = true
 	
 func on_catastrophe_over():
