@@ -1,29 +1,38 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://fonts/MODES___.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://scripts/Settings.gd" type="Script" id=1]
+[ext_resource path="res://fonts/MODES___.TTF" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 36
 use_mipmaps = false
-use_filter = true
-font_data = ExtResource( 1 )
+use_filter = false
+font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=2]
 
-size = 20
+size = 24
 use_mipmaps = false
-use_filter = true
-font_data = ExtResource( 1 )
+use_filter = false
+font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=3]
 
 size = 20
-use_mipmaps = false
+use_mipmaps = true
 use_filter = false
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 20
+use_mipmaps = true
+use_filter = false
+font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Settings" type="PanelContainer" index="0"]
@@ -40,7 +49,11 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 1 )
 _sections_unfolded = [ "Rect" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Panel" type="Panel" parent="." index="0"]
 
@@ -58,6 +71,9 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Label" type="Label" parent="Panel" index="0"]
 
@@ -65,10 +81,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 3.0
-margin_top = 23.0
-margin_right = 1253.0
-margin_bottom = 60.0
+margin_left = 23.0
+margin_top = 43.0
+margin_right = 1243.0
+margin_bottom = 80.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -76,7 +92,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
-text = "Sex and Sexuality"
+text = "Settings"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -89,10 +105,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 73.0
-margin_top = 93.0
-margin_right = 229.0
-margin_bottom = 113.0
+margin_left = 453.0
+margin_top = 123.0
+margin_right = 823.0
+margin_bottom = 153.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -100,22 +116,45 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
-text = "Your pronouns"
+text = "What pronouns do you use?"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="HeHimHis" type="CheckBox" parent="Panel" index="2"]
+[node name="Label3" type="Label" parent="Panel" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 133.0
-margin_top = 133.0
-margin_right = 157.0
-margin_bottom = 157.0
+margin_left = 453.0
+margin_top = 343.0
+margin_right = 823.0
+margin_bottom = 373.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+text = "What is your preference?"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="MaleCheck" type="CheckBox" parent="Panel" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 523.0
+margin_top = 163.0
+margin_right = 671.0
+margin_bottom = 191.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -132,5 +171,240 @@ text = "He/Him/His"
 flat = false
 align = 0
 _sections_unfolded = [ "custom_fonts" ]
+
+[node name="MalePreference" type="CheckBox" parent="Panel" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 523.0
+margin_top = 383.0
+margin_right = 671.0
+margin_bottom = 411.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Male"
+flat = false
+align = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="FemaleCheck" type="CheckBox" parent="Panel" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 523.0
+margin_top = 203.0
+margin_right = 695.0
+margin_bottom = 231.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "She/Her/Hers"
+flat = false
+align = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="FemalePreference" type="CheckBox" parent="Panel" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 523.0
+margin_top = 423.0
+margin_right = 695.0
+margin_bottom = 451.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Female"
+flat = false
+align = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="OtherCheck" type="CheckBox" parent="Panel" index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 523.0
+margin_top = 243.0
+margin_right = 743.0
+margin_bottom = 271.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "They/Them/Theirs"
+flat = false
+align = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="AnyPreference" type="CheckBox" parent="Panel" index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 523.0
+margin_top = 463.0
+margin_right = 743.0
+margin_bottom = 491.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Don't care"
+flat = false
+align = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="NoPreference" type="CheckBox" parent="Panel" index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 523.0
+margin_top = 503.0
+margin_right = 743.0
+margin_bottom = 531.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 3 )
+toggle_mode = true
+pressed = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Not saying"
+flat = false
+align = 0
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="BackButton" type="Button" parent="Panel" index="10"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1163.0
+margin_top = 693.0
+margin_right = 1223.0
+margin_bottom = 719.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Back"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="SaveButton" type="Button" parent="Panel" index="11"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1073.0
+margin_top = 693.0
+margin_right = 1133.0
+margin_bottom = 719.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Save"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[connection signal="toggled" from="Panel/MaleCheck" to="." method="on_male_pronoun_toggled"]
+
+[connection signal="toggled" from="Panel/MalePreference" to="." method="on_male_preference_toggled"]
+
+[connection signal="toggled" from="Panel/FemaleCheck" to="." method="on_female_pronoun_toggled"]
+
+[connection signal="toggled" from="Panel/FemalePreference" to="." method="on_female_preference_toggled"]
+
+[connection signal="toggled" from="Panel/OtherCheck" to="." method="on_other_pronoun_toggled"]
+
+[connection signal="toggled" from="Panel/AnyPreference" to="." method="on_any_preference_toggled"]
+
+[connection signal="toggled" from="Panel/NoPreference" to="." method="on_no_preference_toggled"]
+
+[connection signal="pressed" from="Panel/BackButton" to="." method="on_back_pressed"]
+
+[connection signal="pressed" from="Panel/SaveButton" to="." method="on_save_pressed"]
 
 

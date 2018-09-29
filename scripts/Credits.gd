@@ -14,4 +14,4 @@ func _ready():
 		label.add_text(message)
 
 func on_back_pressed():
-	get_tree().change_scene("res://scenes/welcome.tscn")
+	get_tree().change_scene("res://scenes/Welcome.tscn")

@@ -90,9 +90,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 433.0
+margin_left = 353.0
 margin_top = 673.0
-margin_right = 505.0
+margin_right = 425.0
 margin_bottom = 699.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -111,15 +111,42 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="InstructionsButton" type="Button" parent="Panel" index="2"]
+[node name="SettingsButton" type="Button" parent="Panel" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 533.0
+margin_left = 453.0
 margin_top = 673.0
-margin_right = 703.0
+margin_right = 561.0
+margin_bottom = 699.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Settings"
+flat = false
+align = 1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="InstructionsButton" type="Button" parent="Panel" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 593.0
+margin_top = 673.0
+margin_right = 763.0
 margin_bottom = 699.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -138,15 +165,15 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="CreditsButton" type="Button" parent="Panel" index="3"]
+[node name="CreditsButton" type="Button" parent="Panel" index="4"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 733.0
+margin_left = 793.0
 margin_top = 673.0
-margin_right = 833.0
+margin_right = 893.0
 margin_bottom = 699.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -165,13 +192,15 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Sprite" type="Sprite" parent="Panel" index="4"]
+[node name="Sprite" type="Sprite" parent="Panel" index="5"]
 
 position = Vector2( 628.805, 382.52 )
 scale = Vector2( 1.08897, 1.0697 )
 texture = ExtResource( 3 )
 
 [connection signal="pressed" from="Panel/StartButton" to="." method="on_start_pressed"]
+
+[connection signal="pressed" from="Panel/SettingsButton" to="." method="on_settings_pressed"]
 
 [connection signal="pressed" from="Panel/CreditsButton" to="." method="on_credits_pressed"]
 
