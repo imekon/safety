@@ -18,6 +18,9 @@ func on_body_entered(body):
 					score -= body.score
 				safety -= 10
 				
+		if score < 0:
+			score = 0
+				
 		if safety < 50:
 			safety = 50
 			

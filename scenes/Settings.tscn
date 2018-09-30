@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Settings.gd" type="Script" id=1]
 [ext_resource path="res://fonts/MODES___.TTF" type="DynamicFontData" id=2]
@@ -35,7 +35,15 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Settings" type="PanelContainer" index="0"]
+[sub_resource type="DynamicFont" id=5]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Settings" type="PanelContainer"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -389,6 +397,33 @@ flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
+[node name="ReligiousOption" type="CheckButton" parent="Panel" index="12"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 453.0
+margin_top = 583.0
+margin_right = 821.0
+margin_bottom = 623.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 5 )
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Enable Religious Symbols"
+flat = false
+align = 0
+_sections_unfolded = [ "custom_fonts" ]
+
 [connection signal="toggled" from="Panel/MaleCheck" to="." method="on_male_pronoun_toggled"]
 
 [connection signal="toggled" from="Panel/MalePreference" to="." method="on_male_preference_toggled"]
@@ -406,5 +441,7 @@ _sections_unfolded = [ "custom_fonts" ]
 [connection signal="pressed" from="Panel/BackButton" to="." method="on_back_pressed"]
 
 [connection signal="pressed" from="Panel/SaveButton" to="." method="on_save_pressed"]
+
+[connection signal="toggled" from="Panel/ReligiousOption" to="." method="on_religious_toggled"]
 
 

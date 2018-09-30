@@ -62,3 +62,6 @@ func on_other_pronoun_toggled(button_pressed):
 
 func on_save_pressed():
 	pass # replace with function body
+
+func on_religious_toggled(button_pressed):
+	pass # replace with function body
