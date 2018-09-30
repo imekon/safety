@@ -2,23 +2,22 @@
 
 [ext_resource path="res://scenes/DirectedShape.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/CatastropheShape.gd" type="Script" id=2]
-[ext_resource path="res://images/exorcism.png" type="Texture" id=3]
+[ext_resource path="res://images/storm/storm 1.png" type="Texture" id=3]
 
 [node name="CatastropheShape" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 _sections_unfolded = [ "Material", "Visibility" ]
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 3 )
-_sections_unfolded = [ "Material" ]
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 
-polygon = PoolVector2Array( 0, -20, 15, -15, 25, 0, -5, 20, -25, 0, -20, -10, 0, -20 )
+polygon = PoolVector2Array( 0, -25, 20, -25, 30, -5, 40, 15, 25, 30, 5, 20, -10, 25, -25, 20, -25, 5, -35, -5, -40, -25, -30, -30, -15, -30, -10, -25 )
 
-[node name="Tween" type="Tween" parent="." index="2"]
+[node name="Tween" type="Tween" parent="." index="3"]
 
 repeat = false
 playback_process_mode = 1

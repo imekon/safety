@@ -14,7 +14,8 @@ func on_body_entered(body):
 				score += body.score
 				safety += 1
 			2:
-				score -= body.score
+				if body.score > 0:
+					score -= body.score
 				safety -= 10
 				
 		if safety < 50:
@@ -23,4 +24,10 @@ func on_body_entered(body):
 		if safety > 100:
 			safety = 100
 
+		body.queue_free()
+		
+	if body.is_in_group("catastrophe"):
+		score = 0
+		safety = 50
+		body.emit_signal("catastrophe_over")
 		body.queue_free()

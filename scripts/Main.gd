@@ -11,6 +11,7 @@ onready var scoreLabel = $ScoreLabel
 onready var fpsLabel = $FPSLabel
 onready var shapesLabel = $ShapesLabel
 onready var safetyLabel = $SafetyLabel
+onready var stateBiasLabel = $BiasLabel
 onready var safeSpace = $SafeSpace
 onready var player = $Player
 onready var timer = $Timer
@@ -41,6 +42,8 @@ func _process(delta):
 	var fps = Engine.get_frames_per_second()
 	fpsLabel.text = "FPS: " + str(fps)
 	shapesLabel.text = "Shapes: " + str(get_tree().get_nodes_in_group("falling").size())
+	
+	stateBiasLabel.text = "State Bias: " + str(state_bias)
 	
 	if Input.is_action_pressed("ui_left"):
 		move_player_left(delta)
