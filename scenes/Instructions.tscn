@@ -27,7 +27,7 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Instructions" type="PanelContainer"]
+[node name="Instructions" type="PanelContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -133,7 +133,7 @@ Other symbols - religion and music. You score (or lose) points collecting these.
 
 Catastrophe symbols - generally something can happen that is a disaster. Whatever you do, don't collect it!
 
-[img]res://images/storm/storm 1.png[/img]"
+[img]res://images/skull.png[/img]"
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
