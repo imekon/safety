@@ -2,7 +2,7 @@ extends Node2D
 
 const STARTING_Y = -50
 const MOVEMENT = 100
-const NUM_SHAPES = 16
+const NUM_SHAPES = 17
 
 var state_bias = 0
 var doneCatastrophe = false
@@ -24,6 +24,7 @@ onready var fallingFemale = load("res://scenes/FallingFemale.tscn")
 onready var fallingTrans = load("res://scenes/FallingTrans.tscn")
 onready var fallingMusic = load("res://scenes/FallingMusic.tscn")
 onready var fallingReligious = load("res://scenes/FallingReligious.tscn")
+onready var fallingSkull = load("res://scenes/FallingSkull.tscn")
 
 onready var directedCatastrophe = load("res://scenes/CatastropheShape.tscn")
 
@@ -128,6 +129,12 @@ func release_the_religious():
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
 	return item
+	
+func release_the_skull():
+	var item = fallingSkull.instance()
+	item.position = Vector2(get_random_start(), STARTING_Y)
+	add_child(item)
+	return item
 		
 func release_the_catastrophe():
 	if doneCatastrophe:
@@ -162,6 +169,8 @@ func pick_everything_else(picker, state):
 			item = release_the_music()
 		15:
 			item = release_the_religious()
+		16:
+			item = release_the_skull()
 	item.state = state
 	item.set_state()
 

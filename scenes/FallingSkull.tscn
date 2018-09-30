@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/FallingShape.tscn" type="PackedScene" id=1]
+[ext_resource path="res://images/skull.png" type="Texture" id=2]
+
+[node name="FallingSkull" index="0" instance=ExtResource( 1 )]
+
+score = -5
+
+[node name="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+
+polygon = PoolVector2Array( 6, -30, 20, -18, 20, -2, 18, 8, 8, 30, -10, 30, -20, 8, -20, 4, -20, -2, -20, -18, -8, -30 )
+
+
