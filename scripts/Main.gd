@@ -16,6 +16,10 @@ onready var safeSpace = $SafeSpace
 onready var player = $Player
 onready var timer = $Timer
 
+onready var beatStream = $AudioBeat
+onready var melodyStream = $AudioMelody
+onready var sfxStream = $AudioSFX
+
 onready var fallingEuro = load("res://scenes/FallingEuro.tscn")
 onready var fallingDollar = load("res://scenes/FallingDollar.tscn")
 onready var fallingPound = load("res://scenes/FallingPound.tscn")
