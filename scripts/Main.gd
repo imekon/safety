@@ -30,6 +30,10 @@ onready var fallingMusic = load("res://scenes/FallingMusic.tscn")
 onready var fallingReligious = load("res://scenes/FallingReligious.tscn")
 onready var fallingSkull = load("res://scenes/FallingSkull.tscn")
 
+onready var partnerMale = load("res://scenes/FallingPartnerMale.tscn")
+onready var partnerFemale = load("res://scenes/FallingPartnerFemale.tscn")
+onready var partnerTrans = load("res://scenes/FallingPartnerTrans.tscn")
+
 onready var directedCatastrophe = load("res://scenes/CatastropheShape.tscn")
 
 onready var rain = load("res://scenes/Rain.tscn")
@@ -66,6 +70,8 @@ func on_timer_timeout():
 	var picker = randf()
 	if picker > 0.999:
 		release_the_catastrophe()
+	elif picker > 0.9:
+		release_the_partner()
 	else:
 		var stateRange = randf() + state_bias
 		var state = 1
@@ -139,6 +145,27 @@ func release_the_skull():
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
 	return item
+	
+func release_the_partner_male():
+	var item = partnerMale.instance()
+	item.position = Vector2(get_random_start(), STARTING_Y)
+	add_child(item)
+	return item
+		
+func release_the_partner_female():
+	var item = partnerFemale.instance()
+	item.position = Vector2(get_random_start(), STARTING_Y)
+	add_child(item)
+	return item
+		
+func release_the_partner_trans():
+	var item = partnerTrans.instance()
+	item.position = Vector2(get_random_start(), STARTING_Y)
+	add_child(item)
+	return item
+
+func release_the_partner():
+	pass
 		
 func release_the_catastrophe():
 	if doneCatastrophe:

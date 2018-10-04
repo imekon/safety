@@ -1,9 +1,9 @@
 extends PanelContainer
 
+enum { MALE, FEMALE, OTHER, UNKNOWN }
+
 var pronouns_group
 var sexuality_group
-
-enum { MALE, FEMALE, OTHER, UNKNOWN }
 
 var pronoun = OTHER
 var preference = UNKNOWN
