@@ -6,6 +6,9 @@ const NUM_SHAPES = 17
 
 var state_bias = 0
 var doneCatastrophe = false
+var pronoun = 0
+var preference = 0
+var religious_symbols = true
 
 onready var scoreLabel = $ScoreLabel
 onready var fpsLabel = $FPSLabel
@@ -19,6 +22,8 @@ onready var timer = $Timer
 onready var beatStream = $AudioBeat
 onready var melodyStream = $AudioMelody
 onready var sfxStream = $AudioSFX
+
+const Settings = preload("res://scripts/Settings.gd")
 
 onready var fallingEuro = load("res://scenes/FallingEuro.tscn")
 onready var fallingDollar = load("res://scenes/FallingDollar.tscn")
@@ -43,6 +48,11 @@ func _ready():
 	timer.start()
 	
 func _process(delta):
+	var global = get_node("/root/global")
+	pronoun = global.pronoun
+	preference = global.preference
+	religious_symbols = global.religious_symbols
+
 	scoreLabel.text = "Score: " + str(player.score)
 	safetyLabel.text = "Safety: " + str(player.safety)
 	
@@ -70,7 +80,7 @@ func on_timer_timeout():
 	var picker = randf()
 	if picker > 0.999:
 		release_the_catastrophe()
-	elif picker > 0.9:
+	elif picker > 0.995:
 		release_the_partner()
 	else:
 		var stateRange = randf() + state_bias
@@ -135,6 +145,8 @@ func release_the_music():
 	return item
 		
 func release_the_religious():
+	if !religious_symbols:
+		return
 	var item = fallingReligious.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
@@ -165,7 +177,15 @@ func release_the_partner_trans():
 	return item
 
 func release_the_partner():
-	pass
+	match preference:
+		Settings.MALE:
+			release_the_partner_male()
+		Settings.FEMALE:
+			release_the_partner_female()
+		Settings.OTHER:
+			release_the_partner_trans()
+		Settings.UNKNOWN:
+			pass
 		
 func release_the_catastrophe():
 	if doneCatastrophe:
@@ -202,6 +222,8 @@ func pick_everything_else(picker, state):
 			item = release_the_religious()
 		16:
 			item = release_the_skull()
+	if item == null:
+		return
 	item.state = state
 	item.set_state()
 

@@ -1,12 +1,13 @@
 extends PanelContainer
 
-enum { MALE, FEMALE, OTHER, UNKNOWN }
+enum STATE { MALE, FEMALE, OTHER, UNKNOWN }
 
 var pronouns_group
 var sexuality_group
 
 var pronoun = OTHER
 var preference = UNKNOWN
+var religious_symbols = true
 
 onready var malePronoun = $Panel/MaleCheck
 onready var femalePronoun = $Panel/FemaleCheck
@@ -61,7 +62,10 @@ func on_other_pronoun_toggled(button_pressed):
 		pronoun = OTHER
 
 func on_save_pressed():
-	pass # replace with function body
+	var global = get_node("/root/global")
+	global.pronoun = pronoun
+	global.preference = preference
+	global.religious_symbols = religious_symbols
 
 func on_religious_toggled(button_pressed):
-	pass # replace with function body
+	religious_symbols = button_pressed
