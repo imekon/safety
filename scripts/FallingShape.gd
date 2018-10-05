@@ -7,6 +7,8 @@ export(int) var state = NEUTRAL
 
 onready var sprite = $Sprite
 
+signal partner_found
+
 func set_state():
 	match state:
 		POSITIVE:

@@ -159,21 +159,27 @@ func release_the_skull():
 	return item
 	
 func release_the_partner_male():
+	print("male partner!")
 	var item = partnerMale.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	item.connect("partner_found", self, "on_partner_found")
 	return item
 		
 func release_the_partner_female():
+	print("female partner!")
 	var item = partnerFemale.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	item.connect("partner_found", self, "on_partner_found")
 	return item
 		
 func release_the_partner_trans():
+	print("trans partner!")
 	var item = partnerTrans.instance()
 	item.position = Vector2(get_random_start(), STARTING_Y)
 	add_child(item)
+	item.connect("partner_found", self, "on_partner_found")
 	return item
 
 func release_the_partner():
@@ -199,6 +205,9 @@ func release_the_catastrophe():
 	
 func on_catastrophe_over():
 	state_bias = 0
+	
+func on_partner_found():
+	state_bias = -0.7
 
 func pick_everything_else(picker, state):
 	var index = int(picker * NUM_SHAPES)
