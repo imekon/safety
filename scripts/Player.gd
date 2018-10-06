@@ -1,10 +1,20 @@
 extends KinematicBody2D
 
 var score = 0
+var high_score = 0
+var partners = 0
 var safety = 100
+
+func _ready():
+	pass
+
+func _physics_process(delta):
+	if high_score < score:
+		high_score = score
 
 func on_body_entered(body):
 	if body.is_in_group("partner"):
+		partners += 1
 		body.emit_signal("partner_found")
 		body.queue_free()
 		return

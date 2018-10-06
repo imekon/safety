@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scripts/Welcome.gd" type="Script" id=1]
+[ext_resource path="res://scripts/GameOver.gd" type="Script" id=1]
 [ext_resource path="res://fonts/MODES___.TTF" type="DynamicFontData" id=2]
-[ext_resource path="res://images/shot1.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -20,7 +19,23 @@ use_filter = false
 font_data = ExtResource( 2 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Welcome" type="PanelContainer" index="0"]
+[sub_resource type="DynamicFont" id=3]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 20
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="GameOver" type="PanelContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -36,9 +51,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Rect" ]
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Panel" type="Panel" parent="." index="0"]
 
@@ -56,9 +68,6 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Label" type="Label" parent="Panel" index="0"]
 
@@ -66,10 +75,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 13.0
-margin_top = 33.0
+margin_left = 23.0
+margin_top = 163.0
 margin_right = 1253.0
-margin_bottom = 70.0
+margin_bottom = 200.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -77,77 +86,53 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
-text = "Safe Space"
+text = "Game Over"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="StartButton" type="Button" parent="Panel" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 353.0
-margin_top = 673.0
-margin_right = 425.0
-margin_bottom = 699.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Start"
-flat = false
-align = 1
-_sections_unfolded = [ "custom_fonts" ]
-
-[node name="SettingsButton" type="Button" parent="Panel" index="2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 453.0
-margin_top = 673.0
-margin_right = 561.0
-margin_bottom = 699.0
+margin_top = 263.0
+margin_right = 833.0
+margin_bottom = 313.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
+rect_clip_content = true
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Settings"
-flat = false
-align = 1
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "You've reached the end of Safe Space with this score:"
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="InstructionsButton" type="Button" parent="Panel" index="3"]
+[node name="OKButton" type="Button" parent="Panel" index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 593.0
-margin_top = 673.0
-margin_right = 763.0
-margin_bottom = 699.0
+margin_left = 603.0
+margin_top = 473.0
+margin_right = 663.0
+margin_bottom = 499.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 focus_mode = 2
@@ -155,55 +140,64 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Instructions"
+text = "Quit"
 flat = false
 align = 1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="CreditsButton" type="Button" parent="Panel" index="4"]
+[node name="ScoreLabel" type="Label" parent="Panel" index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 793.0
-margin_top = 673.0
-margin_right = 893.0
-margin_bottom = 699.0
+margin_left = 453.0
+margin_top = 333.0
+margin_right = 823.0
+margin_bottom = 353.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/font = SubResource( 2 )
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-text = "Credits"
-flat = false
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "Score: 0"
 align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 _sections_unfolded = [ "custom_fonts" ]
 
-[node name="Sprite" type="Sprite" parent="Panel" index="5"]
+[node name="HighScoreLabel" type="Label" parent="Panel" index="4"]
 
-position = Vector2( 628.805, 382.52 )
-scale = Vector2( 1.08897, 1.0697 )
-texture = ExtResource( 3 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 453.0
+margin_top = 403.0
+margin_right = 813.0
+margin_bottom = 423.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "High Score: 0"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
 
-[connection signal="pressed" from="Panel/StartButton" to="." method="on_start_pressed"]
-
-[connection signal="pressed" from="Panel/SettingsButton" to="." method="on_settings_pressed"]
-
-[connection signal="pressed" from="Panel/InstructionsButton" to="." method="on_instructions_pressed"]
-
-[connection signal="pressed" from="Panel/CreditsButton" to="." method="on_credits_pressed"]
+[connection signal="pressed" from="Panel/OKButton" to="." method="on_OK_pressed"]
 
 

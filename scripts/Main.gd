@@ -13,6 +13,7 @@ var preference
 var religious_symbols = true
 
 onready var scoreLabel = $ScoreLabel
+onready var highScoreLabel = $HighScoreLabel
 onready var fpsLabel = $FPSLabel
 onready var shapesLabel = $ShapesLabel
 onready var safetyLabel = $SafetyLabel
@@ -47,6 +48,7 @@ onready var rain = load("res://scenes/Rain.tscn")
 
 func _ready():
 	randomize()
+	# print(OS.get_user_data_dir())
 	var global = get_node("/root/global")
 	pronoun = global.pronoun
 	preference = global.preference
@@ -55,6 +57,7 @@ func _ready():
 	
 func _process(delta):
 	scoreLabel.text = "Score: " + str(player.score)
+	highScoreLabel.text = "High Score: " + str(player.high_score)
 	
 	safeSpace.set_safety(player.safety)
 	
@@ -82,6 +85,32 @@ func _process(delta):
 		
 	if Input.is_action_pressed("ui_right"):
 		move_player_right(delta)
+		
+	if player.partners > 5:
+		game_over()
+		
+func game_over():
+	var global = get_node("/root/global")
+	global.score = player.score
+	global.high_score = player.high_score
+	save_scores()
+	get_tree().change_scene("res://scenes/GameOver.tscn")
+	
+func save_scores():
+	var save = File.new()
+	save.open("user://highscore.save", File.WRITE)
+	var data = high_score_data()
+	var text = JSON.print(data)
+	save.store_line(text)
+	save.close()
+	
+func high_score_data():
+	var dict = \
+	{
+		score = player.score,
+		high_score = player.high_score
+	}
+	return dict
 		
 func move_player_left(delta):
 	player.translate(Vector2(-delta * MOVEMENT, 0))
