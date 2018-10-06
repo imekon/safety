@@ -11,6 +11,7 @@ var doneCatastrophe = false
 var pronoun
 var preference
 var religious_symbols = true
+var partner_limit = 5
 
 onready var scoreLabel = $ScoreLabel
 onready var highScoreLabel = $HighScoreLabel
@@ -48,11 +49,11 @@ onready var rain = load("res://scenes/Rain.tscn")
 
 func _ready():
 	randomize()
-	# print(OS.get_user_data_dir())
 	var global = get_node("/root/global")
 	pronoun = global.pronoun
 	preference = global.preference
 	religious_symbols = global.religious_symbols
+	load_scores()
 	timer.start()
 	
 func _process(delta):
@@ -86,7 +87,7 @@ func _process(delta):
 	if Input.is_action_pressed("ui_right"):
 		move_player_right(delta)
 		
-	if player.partners > 5:
+	if player.partners > partner_limit:
 		game_over()
 		
 func game_over():
@@ -103,6 +104,17 @@ func save_scores():
 	var text = JSON.print(data)
 	save.store_line(text)
 	save.close()
+	
+func load_scores():
+	var file = File.new()
+	var error = file.open("user://highscore.save", File.READ)
+	if error != OK:
+		return
+	var text = file.get_line()
+	var json = JSON.parse(text)
+	var data = json.result
+	player.high_score = data.high_score
+	file.close()
 	
 func high_score_data():
 	var dict = \
