@@ -5,9 +5,9 @@ enum STATE { MALE, FEMALE, OTHER, UNKNOWN }
 var pronouns_group
 var sexuality_group
 
-var pronoun = OTHER
-var preference = UNKNOWN
-var religious_symbols = true
+var pronoun = MALE
+var preference = MALE
+var religious_symbols = false
 
 onready var malePronoun = $Panel/MaleCheck
 onready var femalePronoun = $Panel/FemaleCheck

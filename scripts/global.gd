@@ -1,7 +1,7 @@
 extends Node
 
-var pronoun
-var preference
+var pronoun = 0
+var preference = 0
 var religious_symbols = false
 
 func _ready():

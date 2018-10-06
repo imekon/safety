@@ -4,11 +4,12 @@ const STARTING_Y = -50
 const MOVEMENT = 100
 const NUM_SHAPES = 17
 const STATE_BIAS_CREEP = 0.02
+const DISPLAY_DEBUGGING = false
 
 var state_bias = 0
 var doneCatastrophe = false
-var pronoun = 0
-var preference = 0
+var pronoun
+var preference
 var religious_symbols = true
 
 onready var scoreLabel = $ScoreLabel
@@ -46,24 +47,29 @@ onready var rain = load("res://scenes/Rain.tscn")
 
 func _ready():
 	randomize()
-	timer.start()
-	
-func _process(delta):
 	var global = get_node("/root/global")
 	pronoun = global.pronoun
 	preference = global.preference
 	religious_symbols = global.religious_symbols
-
+	timer.start()
+	
+func _process(delta):
 	scoreLabel.text = "Score: " + str(player.score)
-	safetyLabel.text = "Safety: " + str(player.safety)
 	
 	safeSpace.set_safety(player.safety)
 	
-	var fps = Engine.get_frames_per_second()
-	fpsLabel.text = "FPS: " + str(fps)
-	shapesLabel.text = "Shapes: " + str(get_tree().get_nodes_in_group("falling").size())
+	if DISPLAY_DEBUGGING:
+		safetyLabel.text = "Safety: " + str(player.safety)
+		var fps = Engine.get_frames_per_second()
+		fpsLabel.text = "FPS: " + str(fps)
+		shapesLabel.text = "Shapes: " + str(get_tree().get_nodes_in_group("falling").size())
 	
-	stateBiasLabel.text = "State Bias: " + str(state_bias)
+		stateBiasLabel.text = "State Bias: " + str(state_bias)
+	else:
+		safetyLabel.hide()
+		fpsLabel.hide()
+		shapesLabel.hide()
+		stateBiasLabel.hide()
 	
 	if state_bias < 0:
 		state_bias += delta * STATE_BIAS_CREEP
