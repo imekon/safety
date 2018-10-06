@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/FallingShape.tscn" type="PackedScene" id=1]
 
-[node name="FallingPartner" index="0" groups=[
+[node name="FallingPartner" groups=[
 "partner",
 ] instance=ExtResource( 1 )]
 

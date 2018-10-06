@@ -5,13 +5,11 @@ var safety = 100
 
 func on_body_entered(body):
 	if body.is_in_group("partner"):
-		print("hit partner!!!")
 		body.emit_signal("partner_found")
 		body.queue_free()
 		return
 		
 	if body.is_in_group("falling"):
-		
 		match body.state:
 			0:
 				score += body.score * 1.2

@@ -3,6 +3,7 @@ extends Node2D
 const STARTING_Y = -50
 const MOVEMENT = 100
 const NUM_SHAPES = 17
+const STATE_BIAS_CREEP = 0.02
 
 var state_bias = 0
 var doneCatastrophe = false
@@ -64,6 +65,12 @@ func _process(delta):
 	
 	stateBiasLabel.text = "State Bias: " + str(state_bias)
 	
+	if state_bias < 0:
+		state_bias += delta * STATE_BIAS_CREEP
+		
+	if state_bias > 0:
+		state_bias -= delta * STATE_BIAS_CREEP
+	
 	if Input.is_action_pressed("ui_left"):
 		move_player_left(delta)
 		
@@ -80,7 +87,7 @@ func on_timer_timeout():
 	var picker = randf()
 	if picker > 0.999:
 		release_the_catastrophe()
-	elif picker > 0.995:
+	elif picker > 0.99:
 		release_the_partner()
 	else:
 		var stateRange = randf() + state_bias
